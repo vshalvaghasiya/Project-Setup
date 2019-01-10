@@ -40,14 +40,6 @@ class Utility {
     }
     
     class func checkInternet() -> Bool {
-//        let reachability = Reachability()!
-//        let networkReachability: Reachability = Reachability.forInternetConnection();
-//        let networkStatus : NetworkStatus = networkReachability.currentReachabilityStatus();
-//        if (networkStatus.rawValue == 0) {
-//            return false;
-//        } else {
-//            return true;
-//        }
         let connection = Reachability()?.connection.description
         if connection == "Cellular" {
             return true;
@@ -55,6 +47,16 @@ class Utility {
             return true;
         } else {
             return false;
+        }
+    }
+    
+    func addItem(apiType: APIType) {
+        if Utility.checkInternet(){
+            self.delegate?.apiCallCompleted?(true, result: [:], error: String(), apiType: apiType)
+            self.delegate?.apiCallCompleted?(false, result: [:], error: String(), apiType: apiType)
+        }
+        else{
+            Utility.showAlert("Connection Error!", message: "Please check internet connection and retry.", viewController: (self.window?.rootViewController)!)
         }
     }
 }
