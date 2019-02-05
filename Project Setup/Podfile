@@ -8,7 +8,7 @@ target 'Project Setup' do
   # Pods for Project Setup
   pod 'SVProgressHUD', '~> 2.2'
   pod 'IQKeyboardManagerSwift', '~> 6.2'
-  pod 'ReachabilitySwift', '~> 4.3'
+  pod 'Reachability'
   pod 'Alamofire'
   pod 'Fabric', '~> 1.9'
   pod 'Crashlytics', '~> 3.12'
