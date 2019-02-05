@@ -40,13 +40,12 @@ class Utility {
     }
     
     class func checkInternet() -> Bool {
-        let connection = Reachability()?.connection.description
-        if connection == "Cellular" {
-            return true;
-        } else if connection == "WiFi" {
-            return true;
-        } else {
+        let networkReachability: Reachability = Reachability.forInternetConnection();
+        let networkStatus : NetworkStatus = networkReachability.currentReachabilityStatus();
+        if (networkStatus.rawValue == 0) {
             return false;
+        } else {
+            return true;
         }
     }
     
